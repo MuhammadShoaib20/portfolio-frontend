@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+  h1 {
+    @apply text-4xl md:text-5xl font-bold tracking-tight;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl font-semibold;
+  }
+  h3 {
+    @apply text-2xl font-semibold;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-full font-semibold hover:bg-primary-dark transform hover:-translate-y-0.5 transition-all shadow-lg hover:shadow-xl;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-white/30 dark:bg-slate-800/30 backdrop-blur-sm border border-white/20 dark:border-slate-700/30 text-primary rounded-full font-semibold hover:bg-primary hover:text-white transform hover:-translate-y-0.5 transition-all;
+  }
+
+  .social-icon {
+    @apply w-10 h-10 rounded-full bg-white/30 dark:bg-slate-800/30 backdrop-blur-sm border border-white/20 dark:border-slate-700/30 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white hover:-translate-y-1 transition-all;
+  }
+
+  .card {
+    @apply backdrop-blur-md bg-white/30 dark:bg-slate-800/30 border border-white/20 dark:border-slate-700/30 rounded-2xl shadow-lg;
+  }
+}
+/* Force vertical scrollbar to always be visible – prevents layout shift */
+html {
+  overflow-y: scroll;
+}
