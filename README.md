@@ -1,153 +1,121 @@
-# Portfolio Frontend
+# 🎨 Portfolio – Frontend
 
-This is the frontend of a full-stack portfolio application. It provides a modern, responsive interface for showcasing projects, blog posts, skills, and contact information, along with a full-featured admin panel for content management.
+This is the frontend of a full-stack portfolio application built with **React**. It provides a modern, responsive UI for showcasing projects, blogs, skills, and includes a powerful admin dashboard.
+
+---
 
 ## 🔗 Links
 
-- **Frontend (Vercel):** [https://my-portfolio-q9h8.vercel.app](https://my-portfolio-q9h8.vercel.app)
-- **Backend API (Render):** [https://my-portfolio-ler8.onrender.com/api](https://my-portfolio-ler8.onrender.com/api)
-- **GitHub:** [https://github.com/MuhammadShoaib20/my-portfolio](https://github.com/MuhammadShoaib20/my-portfolio)
+* 🚀 **Live Demo:**
+  https://portfolio-frontend-two-eta.vercel.app
 
-> ⚠️ The backend API may return a 404 if the server is sleeping (Render free tier). Wait a moment and retry, or check the API URL in your environment config.
+* 🖥️ **Backend API:**
+  https://portfolio-backend-production-f6c0.up.railway.app/api
+
+* 🐙 **GitHub:**
+  https://github.com/MuhammadShoaib20/portfolio-frontend
 
 ---
 
 ## 🚀 Features
 
-- 🎨 **Modern UI** – Tailwind CSS, dark mode, animations (Framer Motion)
-- 🔐 **Authentication** – JWT login for admin users with role-based access (admin, editor, superadmin)
-- ✍️ **Admin Dashboard** – Manage projects, blog posts, messages, profile, settings, and resumes
-- 📁 **File Uploads** – Images for projects/blogs and PDF/DOC resumes via Cloudinary
-- 📨 **Contact Form** – Visitors can send messages; admin can mark as read/replied and delete
-- 🧾 **Resume Downloads** – Multiple resume versions with download tracking
-- 📊 **Analytics** – View and like counts for projects and blog posts
+* 🎨 Modern UI (Tailwind CSS + Dark Mode)
+* 🎬 Animations (Framer Motion)
+* 🔐 JWT Authentication (Admin roles)
+* ✍️ Admin Dashboard (projects, blogs, messages)
+* 📁 File Uploads (Cloudinary)
+* 📨 Contact Form
+* 📄 Resume Management
+* 📊 Analytics (views & likes)
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| React 18 | UI library |
-| React Router DOM 7 | Client-side routing |
-| Tailwind CSS 3 | Utility-first styling |
-| Axios | HTTP client |
-| React Hot Toast | Toast notifications |
-| Framer Motion | Animations |
-| React Icons | Icon library |
-| date-fns | Date formatting |
-| React Markdown | Render markdown content |
-
----
-
-## 📦 Prerequisites
-
-- Node.js **v18 or higher**
-- npm or yarn
-- Backend API running locally or deployed
-
----
-
-## 🔧 Installation & Setup
-
-**1. Clone the repository:**
-
-```bash
-git clone https://github.com/MuhammadShoaib20/my-portfolio.git
-cd my-portfolio/frontend
-```
-
-**2. Install dependencies:**
-
-```bash
-npm install
-```
-
-**3. Create a `.env` file:**
-
-```env
-REACT_APP_API_URL=http://localhost:5000/api
-```
-
-> Replace with your live backend URL for production (e.g., `https://your-backend.onrender.com/api`).
-
-**4. Start the development server:**
-
-```bash
-npm start
-```
-
-App will be available at [http://localhost:3000](http://localhost:3000).
+| Technology         | Purpose       |
+| ------------------ | ------------- |
+| React 18           | UI            |
+| React Router DOM 7 | Routing       |
+| Tailwind CSS       | Styling       |
+| Axios              | API calls     |
+| React Hot Toast    | Notifications |
+| Framer Motion      | Animations    |
+| React Icons        | Icons         |
+| date-fns           | Date handling |
 
 ---
 
 ## 📁 Project Structure
 
-```
+```bash
 frontend/
-├── public/                 # Static assets
+├── public/
 ├── src/
-│   ├── admin/              # Admin pages (dashboard, projects, blogs, etc.)
-│   ├── components/         # Reusable UI components
-│   ├── context/            # React contexts (Auth, Theme)
-│   ├── pages/              # Public pages (Home, Projects, Blog, Contact)
-│   ├── utils/              # Axios instance and API endpoints
-│   ├── App.js              # Main app with routes
-│   ├── index.js            # Entry point
-│   └── index.css           # Tailwind + global styles
+│   ├── admin/
+│   ├── components/
+│   ├── context/
+│   ├── pages/
+│   ├── utils/
+│   ├── App.js
+│   └── index.js
 ├── .env.example
 ├── package.json
-├── tailwind.config.js
-└── README.md
+└── tailwind.config.js
 ```
 
 ---
 
-## 📜 Available Scripts
+## ⚙️ Installation
 
-| Command | Description |
-|---|---|
-| `npm start` | Run in development mode |
-| `npm test` | Launch test runner |
-| `npm run build` | Build for production |
-| `npm run eject` | Eject from CRA (use with caution) |
-
----
-
-## 🔌 API Integration
-
-All API calls are centralized in `src/utils/api.js`. The Axios instance automatically attaches JWT tokens for protected routes and redirects to login on `401` errors.
-
-| Module | Description |
-|---|---|
-| `authAPI` | Login, register, get/update profile, change password |
-| `projectsAPI` | CRUD for projects |
-| `blogsAPI` | CRUD for blog posts |
-| `contactAPI` | Send and manage contact messages |
-| `profileAPI` | Fetch and update public profile |
-| `userAPI` | Manage admin users (superadmin only) |
-| `resumeAPI` | Manage and download resume files |
+```bash
+git clone https://github.com/MuhammadShoaib20/portfolio-frontend.git
+cd portfolio-frontend
+npm install
+```
 
 ---
 
-## 🚀 Deployment
+## 🔧 Environment Variables
 
-1. Build the project: `npm run build`
-2. Deploy the `build/` folder to Vercel, Netlify, or any static host
-3. Set `REACT_APP_API_URL` to your live backend URL
+Create `.env`:
+
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
+
+👉 Production:
+
+```env
+REACT_APP_API_URL=https://portfolio-backend-production-f6c0.up.railway.app/api
+```
 
 ---
 
-## 🤝 Contributing
+## ▶️ Run Project
 
-Contributions are welcome! Please open an issue or submit a pull request.
+```bash
+npm start
+```
+
+App runs on: **http://localhost:3000**
+
+---
+
+## 🚀 Deployment (Vercel)
+
+1. Push to GitHub
+2. Import in Vercel
+3. Add env: `REACT_APP_API_URL`
+4. Deploy
 
 ---
 
 ## 📄 License
 
-Licensed under the **MIT License**.
+MIT License
 
 ---
 
-<div align="center">Built with ❤️ by <a href="https://github.com/MuhammadShoaib20">Muhammad Shoaib</a></div>
+<div align="center">
+❤️ Built by Muhammad Shoaib
+</div>
