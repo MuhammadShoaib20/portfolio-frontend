@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
-import { FaUser, FaSignInAlt } from 'react-icons/fa';
+import { FaUser, FaSignInAlt, FaArrowLeft } from 'react-icons/fa';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -27,7 +27,19 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 p-4 relative">
+      {/* Back Button - positioned top left */}
+      <Link
+        to="/"
+        className="absolute top-6 left-6 inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                   bg-white dark:bg-slate-800 shadow-md border border-slate-200 dark:border-slate-700
+                   text-slate-700 dark:text-slate-300 hover:text-primary hover:border-primary/50
+                   transition-all duration-200"
+      >
+        <FaArrowLeft size={14} />
+        <span className="text-sm font-medium">Back to Home</span>
+      </Link>
+
       <div className="w-full max-w-md">
         <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8">
           {/* Icon */}
