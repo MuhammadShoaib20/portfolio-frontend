@@ -28,7 +28,7 @@ const SKILLS = [
 ];
 
 const STATS = [
-  { value: '1+', label: 'Years Experience',       icon: '⚡' },
+  { value: '2+', label: 'Years Experience',       icon: '⚡' },
   { value: '3+', label: 'Projects Completed',     icon: '🚀' },
   { value: '6+', label: 'Technologies Mastered',  icon: '🛠️' },
 ];
@@ -89,11 +89,40 @@ const scaleUp = {
 };
 
 /* ─────────────────────────────────────────
-   SMOOTH SCROLL (accounts for 80px navbar)
+   CUSTOM SMOOTH SCROLL WITH SLOW DURATION
 ───────────────────────────────────────── */
+const smoothScrollTo = (targetY, duration = 1200) => {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  let startTime = null;
+
+  // Easing function for smooth acceleration/deceleration
+  const easeInOutCubic = (t) => {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  };
+
+  const animation = (currentTime) => {
+    if (startTime === null) startTime = currentTime;
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeProgress = easeInOutCubic(progress);
+
+    window.scrollTo(0, startY + distance * easeProgress);
+
+    if (progress < 1) {
+      requestAnimationFrame(animation);
+    }
+  };
+
+  requestAnimationFrame(animation);
+};
+
 const scrollTo = (id) => {
   const el = document.getElementById(id);
-  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 88, behavior: 'smooth' });
+  if (el) {
+    const targetY = el.getBoundingClientRect().top + window.scrollY - 88;
+    smoothScrollTo(targetY, 1200); // 1200ms = slow scroll
+  }
 };
 
 /* ─────────────────────────────────────────
@@ -155,7 +184,7 @@ const BackToTop = () => {
         <motion.button
           initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.7 }} transition={{ duration: 0.2 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => smoothScrollTo(0, 1200)}
           aria-label="Back to top"
           className="fixed bottom-24 right-6 z-40 w-11 h-11 rounded-full bg-primary text-white
                      shadow-lg hover:bg-primary-dark hover:shadow-xl transition-all
