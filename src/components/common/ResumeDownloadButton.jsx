@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { resumeAPI } from '../../utils/api';
+import { resumeAPI, API_URL } from '../../utils/api';
 import { FaDownload, FaFilePdf, FaFileWord, FaSpinner } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 
@@ -48,7 +48,7 @@ const ResumeDownloadButton = ({ variant = 'primary' }) => {
     try {
       // Backend proxy endpoint use karo — Cloudinary URL nahi
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/resumes/download/${resume._id}`
+        `${API_URL}/resumes/download/${resume._id}`
       );
 
       if (!response.ok) {

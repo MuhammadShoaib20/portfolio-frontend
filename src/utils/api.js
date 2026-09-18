@@ -2,11 +2,23 @@ import axios from 'axios';
 
 /**
  * Base API URL
- * Dev  : http://localhost:5000/api
- * Prod : set REACT_APP_API_URL in env
+ * Dev  : http://localhost:5000/api   (fallback)
+ * Prod : set REACT_APP_API_URL in the hosting dashboard, e.g.
+ *        https://portfolio-backend-i40w.onrender.com
+ *
+ * The "/api" suffix is appended automatically, so a bare host pasted in the
+ * Vercel dashboard can never produce prefix-less requests again
+ * (e.g. /profile instead of /api/profile -> 404).
  */
-const API_URL =
-  process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const RAW_API_URL = (
+  process.env.REACT_APP_API_URL || 'http://localhost:5000/api'
+).trim();
+
+const API_URL_NO_SLASH = RAW_API_URL.replace(/\/+$/, '');
+
+export const API_URL = /\/api$/.test(API_URL_NO_SLASH)
+  ? API_URL_NO_SLASH
+  : `${API_URL_NO_SLASH}/api`;
 
 /**
  * Axios Instance
